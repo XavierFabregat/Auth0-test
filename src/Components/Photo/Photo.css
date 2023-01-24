@@ -1,0 +1,30 @@
+.photo-container {
+  border: 1px solid blue;
+  margin-right: 1%;
+  width: 15%;
+  min-width: 200px;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1%;
+}
+
+.photo-meta-info {
+  margin-top: auto;
+  border-top: 1px solid gray;
+  height: 20%;
+}
+
+.photo-image {
+  height: 70%;
+}
+
+.photo-title {
+  font-weight: bolder;
+}
+
+.photo-container:hover {
+  transition: all 0.3s ease-in-out;
+  transform: translate(0, -10px);
+}

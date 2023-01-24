@@ -1,0 +1,36 @@
+.dashboard-page-wrapper {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-add-photo {
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    display: absolute;    
+    margin-top: auto;
+    margin-right: 5%;
+    align-self: flex-end;
+}
+
+
+
+.dashboard-add-photo-icon:hover {
+  transition: all 0.3s ease-in-out;
+  transform: rotate(-360deg);
+}
+
+.dasboard-photos {
+    margin-top: 1%;
+    height: 100%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
