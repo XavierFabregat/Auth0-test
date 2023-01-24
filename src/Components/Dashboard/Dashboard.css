@@ -25,6 +25,7 @@
 }
 
 .dasboard-photos {
+    overflow: scroll !important;
     margin-top: 1%;
     height: 100%;
     width: 90%;

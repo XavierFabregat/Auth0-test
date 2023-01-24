@@ -37,7 +37,6 @@ const NoAuthDashboard = function () {
         <div className='dashboard-page-wrapper'>
             <div className='dasboard-photos'>
                 {photos.map(photo => {
-                    console.log(photo.URL)
                     return <Photo photo={photo} key={photo._id} onClick={() => {
                         onPhotoModalOpen();
                         setSelectedPhoto(photo);

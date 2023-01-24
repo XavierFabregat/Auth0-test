@@ -6,7 +6,8 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Button
+  Button,
+  useToast
 } from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 import './AddFotoModal.css'
@@ -19,12 +20,12 @@ export const AddFotoModal = function ({isOpen, onClose}) {
     const [imageURL, setImageURL] = useState();
 
     const formRef = useRef();
+    const toast = useToast();
 
     const { user } = useAuth0()
 
     const onImageChange = function (e) {
-        console.log(e.target.files[0])
-        setImage(e.target.files[0]);
+      setImage(e.target.files[0]);
     }
 
     const uploadImage = async function (image) {
@@ -54,7 +55,24 @@ export const AddFotoModal = function ({isOpen, onClose}) {
         userId: user.sub,
       }
       const photosOfUser = await userService.postPhotoOfUser(body);
-      console.log(photosOfUser);
+      if (!photosOfUser.error) {
+        toast({
+          title: 'Post Saved',
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+          position: 'top-right'
+        })
+      } else {
+        toast({
+          title: 'Error Saving Post',
+          description: 'Please try again in a moment.',
+          status: 'error',
+          duration: 5000,
+          isClosable: false,
+          position: 'top-right'
+        })
+      }
       e.reset();
     }
 
