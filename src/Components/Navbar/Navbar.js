@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import './Navbar.css'
-import LogoutButton from "../Logout/Logout";
 import { Link } from "react-router-dom";
 import {AppLogo} from '../Logos/AppLogo'
+import { DropDownMenu } from "../DropDownMenu/DropDownMenu";
 
 export const Navbar = function () {
   const {user, isLoading, isAuthenticated} = useAuth0();
@@ -15,7 +15,6 @@ export const Navbar = function () {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
-  //const baseUrl = 'http://localhost:3000'
 
 
   return (
@@ -25,14 +24,12 @@ export const Navbar = function () {
           <AppLogo style={{height : "100px", width: "150px"}}/>
         </div>
         <div className="navbar-profile">
-          {/* {(window.location.href !== `${baseUrl}/profile`) && ( */}
-            <>
-              <img src={user.picture} alt={user.name} className='navbar-profile-picture'/>
-              <Link className="navbar-username" to={'/profile'}>{user.name}</Link>
-            </>
-          {/* )} */}
+          <section className="navbar-profile-user">
+            <img src={user.picture} alt={user.name} className='navbar-profile-picture'/>
+            <Link className="navbar-username" to={'/profile'}>{user.name}</Link>
+          </section>
           <div className="navbar-logout">
-            <LogoutButton />
+            <DropDownMenu />
           </div>
         </div>
       </div>

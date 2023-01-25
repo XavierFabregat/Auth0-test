@@ -7,7 +7,7 @@ import './Profile.css'
 const Profile = () => {
   const { user } = useAuth0();
   const navigate = useNavigate()
-  console.log(user);
+  document.title = `${user.name.includes(' ') ? user.name.split(' ')[0] : user.name}'s Profile`
 
   return (
       <div className="profile-page-wrapper">

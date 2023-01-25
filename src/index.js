@@ -7,6 +7,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log(process.env.REACT_APP_AUTH0_DOMAIN,process.env.REACT_APP_AUTH0_CLIENT_ID)
 root.render(
   <React.StrictMode>
     <Auth0Provider

@@ -4,7 +4,7 @@ import './Login.css'
 
 export const Login = function () {
     const { loginWithRedirect, isAuthenticated, user } = useAuth0()
-
+    document.title = 'Login Page';
     console.log(isAuthenticated, user);
 
     return (
