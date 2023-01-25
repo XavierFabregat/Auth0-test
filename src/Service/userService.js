@@ -42,5 +42,21 @@ export const userService = {
     } catch (error) {
       console.log(`Error in getUser service : ${error}`);
     }
+  },
+
+  favoritePhoto: async function (body) {
+    try {
+      body = JSON.stringify(body);
+      const response = await fetch(`${constants.baseUrl}/favorite`, {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        body,
+      })
+      return await response.json();
+    } catch (error) {
+      console.log(`Error in favoritePhoto service : ${error}`);
+    }
   }
 }
