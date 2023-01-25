@@ -7,23 +7,27 @@ import {
   Button
 } from '@chakra-ui/react';
 
-import { ChevronDownIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
 import LogoutButton from '../Logout/Logout';
-
+import { useNavigate } from 'react-router-dom';
 
 
 export const DropDownMenu = function () {
-  return (<Menu>
-    <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-      Menu
-    </MenuButton>
-    <MenuList>
-      <MenuItem><LogoutButton /></MenuItem>
-      <MenuDivider/>
-      <MenuItem>Create a Copy</MenuItem>
-      <MenuItem>Mark as Draft</MenuItem>
-      <MenuItem>Delete</MenuItem>
-      <MenuItem>Attend a Workshop</MenuItem>
-    </MenuList>
+  const navigate = useNavigate();
+  return (
+  <Menu>
+
+    {({isOpen}) => (
+      <>
+        <MenuButton as={Button} rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} width='100%'>
+          Menu
+        </MenuButton>
+        <MenuList>
+          <MenuItem onClick={() => navigate('/dashboard')}>Dashboard</MenuItem>
+          <MenuItem onClick={() => navigate('/profile')}>Profile</MenuItem>
+          <MenuDivider/>
+          <MenuItem><LogoutButton /></MenuItem>
+        </MenuList>
+    </>)}
   </Menu>)
 }
