@@ -21,7 +21,7 @@ export const Navbar = function () {
     isAuthenticated && (
       <div className="navbar">
         <div className="navbar-title-logo" >
-          <AppLogo style={{height : "100px", width: "150px"}}/>
+          <AppLogo style={{height : "100px", width: "100px"}}/>
         </div>
         <div className="navbar-profile">
           <section className="navbar-profile-user">
