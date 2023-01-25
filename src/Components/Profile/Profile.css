@@ -4,6 +4,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items:center;
+    background: #9c88ed63;
 }
 
 .profile-info-wrapper{

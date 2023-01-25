@@ -27,6 +27,8 @@ const NoAuthDashboard = function () {
     const [photos, setPhotos] = useState([]);
     const [selectedPhoto, setSelectedPhoto] = useState({});
 
+    document.title = `${user.name.includes(' ') ? user.name.split(' ')[0] : user.name}'s Dashboard`;
+
     useEffect(() => {
         (async function (id) {
             setPhotos((await userService.getUser(id)).photos);

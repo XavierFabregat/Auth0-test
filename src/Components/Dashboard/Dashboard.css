@@ -1,8 +1,9 @@
 .dashboard-page-wrapper {
-    height: 75%;
+    height: 85%;
     width: 100%;
     display: flex;
     flex-direction: column;
+    background: #9c88ed63;
 }
 
 .dashboard-add-photo {
@@ -14,10 +15,9 @@
     display: absolute;    
     margin-top: auto;
     margin-right: 5%;
+    margin-bottom: 5%;
     align-self: flex-end;
 }
-
-
 
 .dashboard-add-photo-icon:hover {
   transition: all 0.3s ease-in-out;
