@@ -58,5 +58,14 @@ export const userService = {
     } catch (error) {
       console.log(`Error in favoritePhoto service : ${error}`);
     }
+  },
+
+  getUserFavoritePhotos: async function (userId) {
+    try {
+      const response = await fetch(`${constants.baseUrl}/favorite/${userId}`);
+      return await response.json();
+    } catch (error) {
+      console.log(`Error in getUserFavoritePhotos service : ${error}`);
+    }
   }
 }
