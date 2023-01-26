@@ -19,7 +19,11 @@ export const DropDownMenu = function () {
 
     {({isOpen}) => (
       <>
-        <MenuButton as={Button} rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} width='100%'>
+        <MenuButton 
+        as={Button} 
+        rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />} 
+        width='100%'
+        minWidth={'fit-content'}>
           Menu
         </MenuButton>
         <MenuList>
