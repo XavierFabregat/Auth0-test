@@ -8,12 +8,15 @@ export const favoritePhotosSlice = createSlice({
   reducers: {
     setFavoritePhotos: (state,action) => {
       state = action.payload;
+      return state;
     },
     addFavortiePhoto: (state, action) => {
+      console.log([...state, action.payload]);
       state = [...state, action.payload];
+      return state;
     },
     removeFavoritePhoto: (state,action) => {
-      state.filter(photo => photo._id === action.payload._id);
+      return state.filter(photo => photo._id === action.payload._id);
     },
   }
 });

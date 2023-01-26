@@ -12,20 +12,28 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import './PhotoDetailsModal.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import { userService } from '../../Service/userService';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { addFavortiePhoto, removeFavoritePhoto } from '../../redux/slices/favoritePhotosSlice';
 
 export const PhotoDetailsModal = function ({photo, isOpen, onClose}) {
 
   const { user } = useAuth0()
   const dispatch = useDispatch();
+  
+  const favPhotos = useSelector(state => state.favoritePhotos);
+  const photoFromRedux = favPhotos.find(photoRedux => photoRedux._id === photo._id);
 
-  const [isFavorite, setIsFavorite] = useState(photo.favorite);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    photoFromRedux && setIsFavorite(photoFromRedux.favorite)
+  }, [photoFromRedux])
 
   async function handleFavorite () {
     const photoFavorited = await userService.favoritePhoto({userId : user.sub, photoId: photo._id});
     setIsFavorite(photoFavorited.favorite);
+    console.log(photoFavorited.favorite)
     if (photoFavorited.favorite) {
       dispatch(addFavortiePhoto(photo));
     } else {

@@ -45,13 +45,13 @@ const NoAuthDashboard = function () {
                     }}/>
                 })}
             </div>
-            <PhotoDetailsModal onClose={onPhotoModalClose} isOpen={isPhotoModalOpen} photo={selectedPhoto} />
+            <PhotoDetailsModal onClose={onPhotoModalClose} isOpen={isPhotoModalOpen} photo={selectedPhoto} isLazy/>
             <button 
             className='dashboard-add-photo' 
             onClick={onFormModalOpen}>
                 <AiOutlinePlusCircle size={'50px'} color={'rgb(0, 60, 255)'} className='dashboard-add-photo-icon'/>
             </button>
-            <AddFotoModal onClose={onFormModalClose} isOpen={isFormModalOpen}/>
+            <AddFotoModal onClose={onFormModalClose} isOpen={isFormModalOpen} />
         </div>
     )
 };
