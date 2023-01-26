@@ -5,7 +5,7 @@ import App from './App';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { store } from './redux/store';
-import { Provider as ReduxProvider } from 'react';
+import { Provider } from 'react-redux';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,11 +19,11 @@ root.render(
         redirect_uri: `${window.location.origin}/dashboard`
       }}
     >
-      <ReduxProvider store={store}>
+      <Provider store={store}>
         <ChakraProvider>
           <App />
         </ChakraProvider>
-      </ReduxProvider>
+      </Provider>
     </Auth0Provider>
   </React.StrictMode>
 );

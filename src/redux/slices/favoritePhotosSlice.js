@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  favoritePhotos: [],
-};
+const initialState = [];
 
 export const favoritePhotosSlice = createSlice({
   name: 'favoritePhotos',

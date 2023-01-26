@@ -13,16 +13,24 @@ import './PhotoDetailsModal.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import { userService } from '../../Service/userService';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addFavortiePhoto, removeFavoritePhoto } from '../../redux/slices/favoritePhotosSlice';
 
 export const PhotoDetailsModal = function ({photo, isOpen, onClose}) {
 
   const { user } = useAuth0()
+  const dispatch = useDispatch();
 
   const [isFavorite, setIsFavorite] = useState(photo.favorite);
 
   async function handleFavorite () {
     const photoFavorited = await userService.favoritePhoto({userId : user.sub, photoId: photo._id});
     setIsFavorite(photoFavorited.favorite);
+    if (photoFavorited.favorite) {
+      dispatch(addFavortiePhoto(photo));
+    } else {
+      dispatch(removeFavoritePhoto(photo));
+    }
     console.log(photoFavorited);
   }
 
@@ -51,6 +59,7 @@ export const PhotoDetailsModal = function ({photo, isOpen, onClose}) {
             Close
           </Button>
           <Button
+          aria-label="Toggle Favorite"
           onClick={handleFavorite}>
             {isFavorite ? <AiFillHeart color='red'/> : <AiOutlineHeart />}
            </Button>

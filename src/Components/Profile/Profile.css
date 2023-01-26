@@ -45,3 +45,9 @@
     color: white;
     font-weight: bolder;
 }
+
+.profile-favorite-photos {
+    height: 100%;
+    width: 100%;
+    padding: 5%;
+}
