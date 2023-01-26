@@ -7,17 +7,22 @@ import {
   ModalBody,
   ModalCloseButton,
   Button
-} from '@chakra-ui/react'
-import './PhotoDetailsModal.css'
-import { useAuth0 } from '@auth0/auth0-react'
-import { userService } from '../../Service/userService'
+} from '@chakra-ui/react';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import './PhotoDetailsModal.css';
+import { useAuth0 } from '@auth0/auth0-react';
+import { userService } from '../../Service/userService';
+import { useState } from 'react';
 
 export const PhotoDetailsModal = function ({photo, isOpen, onClose}) {
 
   const { user } = useAuth0()
 
+  const [isFavorite, setIsFavorite] = useState(photo.favorite);
+
   async function handleFavorite () {
     const photoFavorited = await userService.favoritePhoto({userId : user.sub, photoId: photo._id});
+    setIsFavorite(photoFavorited.favorite);
     console.log(photoFavorited);
   }
 
@@ -25,7 +30,7 @@ export const PhotoDetailsModal = function ({photo, isOpen, onClose}) {
       <Modal isOpen={isOpen} onClose={onClose} size={'5xl'}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader alignSelf={'center'}>{photo.title}</ModalHeader>
+        <ModalHeader alignSelf={'center'}>{photo.title.slice(0,1).toUpperCase() + photo.title.slice(1)}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <img 
@@ -45,7 +50,10 @@ export const PhotoDetailsModal = function ({photo, isOpen, onClose}) {
           <Button variant='ghost' mr={3} onClick={onClose}>
             Close
           </Button>
-          <Button colorScheme={'blue'} mr={3} onClick={handleFavorite}>Favorite</Button>
+          <Button
+          onClick={handleFavorite}>
+            {isFavorite ? <AiFillHeart color='red'/> : <AiOutlineHeart />}
+           </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
